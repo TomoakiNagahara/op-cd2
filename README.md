@@ -28,11 +28,13 @@ version   : You can specify execute PHP version. - default is empty
 # Files
 
  * README.md      - This one.
- * 0_action.php   - Always call this file.
- * 1_clone.php    - Clone git repository.
- * 2_upstream.php - Setup upstream.
- * 2_update.php   - PULL of origin and upstream.
- * 3_push.php     - PUSH to upstream.
+ * action.php     - Always call this file.
+ * Error.php      - Error settings.
+ * Request.php    - Parse CLI arguments into key-value types.
+ * Display.php    - Display of message.
+ * Debug.php      - Debug information for developer.
+ * config.php     - Example
+ * CD2.class.php  - Cloning repository and Update repository then do CI/CD.
  * ci.sh          - Required for git pre-push. This will eventually become unnecessary.
 
 # Change repository
