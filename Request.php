@@ -57,7 +57,8 @@ function GetArgv() : array {
 	if( $path = $argv['config'] ?? null ){
 		//	...
 		if(!file_exists($path) ){
-			throw new Exception("Config file does not exists. ({$path})");
+			$current = getcwd();
+			throw new Exception("Config file does not exists. (current={$current}, {$path})");
 		}
 
 		//	Sandbox
