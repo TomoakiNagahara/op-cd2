@@ -216,4 +216,47 @@ class CD2
 		$branch = Request('branch');
 		self::Shell("php git.php asset/git/rebase.php remote=origin branch={$branch}");
 	}
+
+	/** CI
+	 *
+	 * @created    2023-02-07
+	 */
+	static function CI()
+	{
+		//	...
+		Debug(__METHOD__, false);
+
+		//	...
+		$display = Request('display');
+		$debug   = Request('debug');
+		$version = Request('version');
+
+		//	...
+		if( $version ){
+			$versions = explode(',', $version);
+		}else{
+			$versions = [''];
+		}
+
+		//	...
+		$configs = self::SubmoduleConfig();
+
+		//	...
+		foreach( $versions as $version){
+			//	Top
+			self::ChangeDirectory();
+			self::Shell("php{$version} ci.php display={$display} debug={$debug}");
+
+			//	Submodules
+			foreach( $configs as $config ){
+				//	...
+				self::ChangeDirectory($config['path']);
+				//	...
+				self::Shell("php{$version} ci.php display={$display} debug={$debug}");
+			}
+		}
+
+		//	...
+		Display(" * All inspection is complete.");
+	}
 }
