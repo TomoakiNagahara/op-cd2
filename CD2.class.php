@@ -43,4 +43,33 @@ class CD2
 		//	...
 		Display(' * Change Directory: '.getcwd());
 	}
+
+	/** Get SubmoduleConfig
+	 *
+	 * @created    2023-02-16
+	 * @throws     Exception
+	 * @return     array
+	 */
+	static function SubmoduleConfig():array
+	{
+		//	...
+		static $_configs;
+
+		//	...
+		if(!$_configs ){
+			//	...
+			self::ChangeDirectory();
+
+			//	...
+			require_once('asset/unit/git/function/SubmoduleConfig.php');
+
+			//	...
+			if(!$configs = \OP\UNIT\GIT\SubmoduleConfig() ){
+				throw new Exception("Get SubmoduleConfig was failed.");
+			}
+		}
+
+		//	...
+		return $configs;
+	}
 }
