@@ -12,13 +12,18 @@
 //	...
 $config = [];
 $config['workspace'] = '/www/workspace/';
-$config['upstream']  = 'repo:~/repo/op/skeleton/2022.git';
+$config['upstream']  = 'https://github.com/onepiece-framework/op-app-skeleton-2022';
 $config['origin']    = '~/repo/op/skeleton/2022.git';
-$config['branch']    = 'php74'; // Switch to this branch
-$config['directory'] = 'php74'; // Git clone use this directory name
+$config['github']    = 'TomoakiNagahara'; // GitHub account (user name)
+$config['branch']    = 'php74'; // This is parent branch. Each submodules branch is .gitmodules.
+$config['directory'] = '2022-php74';  // Git clone use this directory name
+$config['gitmodules']=[ // Which .gitmodules file.
+	'origin'   => 'local',
+	'upstream' => 'repo',
+];
 $config['display']   = '1';
 $config['debug']     = '1';
-$config['version']   = '74';
+$config['version']   = '70, 71, 72, 73, 74'; // PHP version to inspect.
 
 //	...
 return $config;
