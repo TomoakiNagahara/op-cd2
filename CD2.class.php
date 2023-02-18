@@ -124,4 +124,79 @@ class CD2
 		$directory = Request('directory');
 		self::$_git_root  = rtrim($workspace,'/').'/'.$directory.'/';
 	}
+
+	/** Clone
+	 *
+	 * @created    2023-02-05
+	 */
+	static function Clone()
+	{
+		//	...
+		Debug(__METHOD__, false);
+
+		//	...
+		$workspace = Request('workspace');
+		$display   = Request('display');
+		$debug     = Request('debug');
+		$origin    = Request('origin');
+		$directory = Request('directory');
+
+		//	Check if already cloned.
+		if( file_exists(self::$_git_root) ){
+			Debug('Already cloned.('.self::$_git_root.')', 0);
+			return;
+		}
+
+		//	Check if workspace exists.
+		if(!file_exists($workspace) ){
+			//	Create workspace directory.
+			if( self::Shell('mkdir {$workspace}') ){
+				throw new Exception("mkdir failed. ($workspace)");
+			}
+		}
+
+		//	Change directory to workspace.
+		if(!chdir($workspace) ){
+			throw new Exception("chdir failed. ($workspace)");
+		}
+
+		//	Git clone.
+		self::Shell("git clone {$origin} {$directory}");
+
+		//	Change directory to cloned directory.
+		self::ChangeDirectory();
+
+		//	Change submodule resource.
+		$user_name = Request('github');
+		self::Shell("sh ./asset/git/submodule/repo.sh {$user_name}");
+
+		//	Switch to origin .gitmodules file.
+		$gitmodules = '.gitmodules_'.Request('gitmodules')['origin'];
+		self::Shell("rm .gitmodules");
+		self::Shell("cp {$gitmodules} .gitmodules");
+		self::Shell("git submodule sync");
+
+		//	Init submodules.
+		self::Shell("sh ./asset/git/submodule/init.sh");
+
+		//	Init app by ci.php.
+		self::Shell("php ci.php display={$display} debug={$debug}");
+
+		//	Set submodules upstream repository.
+		$gitmodules = '.gitmodules_'.Request('gitmodules')['upstream'];
+		self::Shell("php git.php asset/git/submodule/remote/add.php config={$gitmodules} name=upstream display={$display} debug={$debug} test=0");
+
+		//	Set upstream
+		$upstream = Request('upstream');
+		self::ChangeDirectory();
+		self::Shell("git remote add upstream {$upstream}");
+
+		//	Fetch upstream
+		self::Shell("git fetch upstream");
+		self::Shell("git submodule foreach git fetch upstream");
+
+		//	Recovery .gitmodules
+		self::Shell('rm .gitmodules');
+		self::Shell('cp .gitmodules_origin .gitmodules');
+	}
 }
