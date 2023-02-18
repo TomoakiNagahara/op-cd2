@@ -14,12 +14,16 @@ $config = [];
 $config['workspace'] = '/www/workspace/';
 $config['upstream']  = 'repo:~/repo/op/skeleton/2022.git';
 $config['origin']    = '~/repo/op/skeleton/2022.git';
-$config['branch']    = '2022';  // Switch to this branch
-$config['directory'] = '2022';  // Git clone use this directory name
-$config['submodule'] = 'local'; // Git submodule change script name
+$config['github']    = 'TomoakiNagahara'; // GitHub account (user name)
+$config['branch']    = 'master'; // This is parent branch. Each submodules branch is .gitmodules.
+$config['directory'] = '2022';   // Git clone use this directory name
+$config['gitmodules']=[ // Which .gitmodules file.
+	'origin'   => 'local',
+	'upstream' => 'repo',
+];
 $config['display']   = '1';
 $config['debug']     = '1';
-$config['version']   = '74,82';
+$config['version']   = '74, 80, 81, 82'; // PHP version to inspect.
 
 //	...
 return $config;
