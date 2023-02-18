@@ -72,4 +72,34 @@ class CD2
 		//	...
 		return $configs;
 	}
+
+	/** Auto
+	 *
+	 * @created    2023-02-05
+	 */
+	static function Auto()
+	{
+		//	...
+		Debug(__METHOD__, false);
+
+		//	...
+		try{
+			self::Init();
+			self::Clone();
+			self::Rebase();
+			self::CI();
+			self::CD();
+
+			//	...
+			Display(`git submodule status` ?? '');
+
+		}catch( Throwable $e ){
+			echo "\n" . $e->getMessage() . "\n";
+			DebugTrace( $e->getTrace() );
+			return false;
+		}
+
+		//	...
+		return true;
+	}
 }
