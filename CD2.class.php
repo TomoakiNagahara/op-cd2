@@ -25,4 +25,22 @@ class CD2
 	 * @var string
 	 */
 	static private $_git_root;
+
+	/** Chenge directory git root.
+	 *
+	 * @created    2023-02-07
+	 * @param      string      $path
+	 * @throws     Exception
+	 */
+	static private function ChangeDirectory($path='')
+	{
+		//	...
+		if(!chdir(self::$_git_root.$path ) ){
+			$current = getcwd();
+			$gitroot = self::$_git_root.$path;
+			throw new Exception("chdir failed. (current={$current}, directory={$gitroot})");
+		}
+		//	...
+		Display(' * Change Directory: '.getcwd());
+	}
 }
