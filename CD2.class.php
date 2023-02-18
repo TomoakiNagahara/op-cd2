@@ -199,4 +199,21 @@ class CD2
 		self::Shell('rm .gitmodules');
 		self::Shell('cp .gitmodules_origin .gitmodules');
 	}
+
+	/** Rebase to the latest.
+	 *
+	 * @created    2023-02-07
+	 */
+	static function Rebase()
+	{
+		//	...
+		Debug(__METHOD__, false);
+
+		//	...
+		self::ChangeDirectory();
+
+		//	...
+		$branch = Request('branch');
+		self::Shell("php git.php asset/git/rebase.php remote=origin branch={$branch}");
+	}
 }
