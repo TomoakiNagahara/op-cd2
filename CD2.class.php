@@ -102,4 +102,26 @@ class CD2
 		//	...
 		return true;
 	}
+
+	/** Init
+	 *
+	 * @created    2023-02-05
+	 */
+	static function Init()
+	{
+		//	...
+		Debug(__METHOD__, false);
+
+		//	...
+		foreach(['config','workspace','upstream','origin','branch','directory'] as $key ){
+			if( empty( /* self::$_config[$key] = */ Request($key) ) ){
+				throw new Exception("This arguments is not set ({$key}). Please read README.md.");
+			}
+		}
+
+		//	...
+		$workspace = Request('workspace');
+		$directory = Request('directory');
+		self::$_git_root  = rtrim($workspace,'/').'/'.$directory.'/';
+	}
 }
