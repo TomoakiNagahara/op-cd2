@@ -297,4 +297,28 @@ class CD2
 		//	...
 		Display(" * All delivery is complete.");
 	}
+
+	/** Execute shell
+	 *
+	 * @created    2023-02-07
+	 * @param      string      $cmd
+	 */
+	static function Shell($cmd)
+	{
+		//	...
+		$result = [];
+		$status = 0;
+		exec("$cmd 2>&1", $result, $status);
+
+		//	...
+		Display("\n * {$cmd}\n");
+		if( $result ){
+			Display( join("\n", $result) . "\n" );
+		}
+
+		//	...
+		if( $status ){
+			throw new Exception($cmd);
+		}
+	}
 }
