@@ -18,4 +18,11 @@
  */
 class CD2
 {
+	/** Git root.
+	 *
+	 * .git is located.
+	 *
+	 * @var string
+	 */
+	static private $_git_root;
 }
