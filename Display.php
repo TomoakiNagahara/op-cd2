@@ -26,6 +26,11 @@ function Display(string $message)
 	}
 
 	//	...
+	if(!strlen($message) ){
+		return;
+	}
+
+	//	...
 	if( $_display ){
 		//	...
 		echo $message . "\n";
