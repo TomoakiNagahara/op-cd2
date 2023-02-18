@@ -259,4 +259,42 @@ class CD2
 		//	...
 		Display(" * All inspection is complete.");
 	}
+
+	/** CD
+	 *
+	 * @created    2023-02-07
+	 */
+	static function CD()
+	{
+		//	...
+		Debug(__METHOD__, false);
+
+		//	...
+		if(!chdir(self::$_git_root) ){
+			$current = getcwd();
+			$gitroot = self::$_git_root;
+			throw new Exception("chdir failed. (current={$current}, directory={$gitroot})");
+		}
+
+		//	...
+		$display = Request('display');
+		$debug   = Request('debug');
+		$remote  = 'upstream';
+		self::ChangeDirectory();
+		self::Shell("php cd.php remote={$remote} display={$display} debug={$debug}");
+
+		//	...
+		$configs = self::SubmoduleConfig();
+
+		//	Submodules
+		foreach( $configs as $config ){
+			//	...
+			self::ChangeDirectory($config['path']);
+			//	...
+			self::Shell("php cd.php remote={$remote} display={$display} debug={$debug}");
+		}
+
+		//	...
+		Display(" * All delivery is complete.");
+	}
 }
