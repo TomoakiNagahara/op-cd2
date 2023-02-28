@@ -288,6 +288,12 @@ class CD2
 		Debug(__METHOD__, false);
 
 		//	...
+		if(!(Request('cd') ?? 1) ){
+			Debug('Skip CD', false);
+			return;
+		}
+
+		//	...
 		if(!chdir(self::$_git_root) ){
 			$current = getcwd();
 			$gitroot = self::$_git_root;
