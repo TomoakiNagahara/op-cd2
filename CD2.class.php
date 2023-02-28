@@ -211,6 +211,12 @@ class CD2
 		Debug(__METHOD__, false);
 
 		//	...
+		if(!(Request('rebase') ?? 1) ){
+			Debug(" * Skip rebase", false);
+			return;
+		}
+
+		//	...
 		self::ChangeDirectory();
 
 		//	...
