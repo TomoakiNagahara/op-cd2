@@ -341,6 +341,12 @@ class CD2
 		}
 
 		//	...
+		if( Request('debug') ){
+			$current = getcwd();
+			Debug("{$current} - $cmd --> $status", false);
+		}
+
+		//	...
 		if( $status ){
 			throw new Exception($cmd);
 		}
