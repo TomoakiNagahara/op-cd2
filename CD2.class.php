@@ -250,6 +250,9 @@ class CD2
 
 		//	...
 		foreach( $versions as $version){
+			//	' 82' --> '82'
+			$version = trim($version);
+
 			//	Top
 			self::ChangeDirectory();
 			self::Shell("php{$version} ci.php display={$display} debug={$debug}");
