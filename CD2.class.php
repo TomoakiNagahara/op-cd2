@@ -237,6 +237,7 @@ class CD2
 		$display = Request('display');
 		$debug   = Request('debug');
 		$version = Request('version');
+		$submodule = Request('submodule');
 
 		//	...
 		if( $version ){
@@ -259,6 +260,13 @@ class CD2
 
 			//	Submodules
 			foreach( $configs as $config ){
+				//	...
+				if( $submodule ){
+					if( $submodule !== $config['path'] ){
+						continue;
+					}
+				}
+
 				//	...
 				self::ChangeDirectory($config['path']);
 				//	...
