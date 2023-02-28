@@ -94,7 +94,8 @@ class CD2
 			Display(`git submodule status` ?? '');
 
 		}catch( Throwable $e ){
-			echo "\n" . $e->getMessage() . "\n";
+			$message = $e->getMessage();
+			echo "\nCD2: {$message}\n";
 			DebugTrace( $e->getTrace() );
 			return false;
 		}
