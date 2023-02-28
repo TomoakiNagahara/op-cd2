@@ -144,7 +144,7 @@ class CD2
 
 		//	Check if already cloned.
 		if( file_exists(self::$_git_root) ){
-			Debug('Already cloned.('.self::$_git_root.')', 0);
+			Debug(' * Already cloned.('.self::$_git_root.')', 0);
 			return;
 		}
 
