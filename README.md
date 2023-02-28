@@ -23,6 +23,9 @@ upstream  : Upstream repository path or URL.
 display   : You can hide in progress message.    - default is show
 debug     : Display debug information.           - default is hide
 version   : You can specify execute PHP version. - default is empty
+submodule : Specify submodule.
+rebase    : Skip rebase.
+cd        : Skip CD.
 ```
 
 # Files
