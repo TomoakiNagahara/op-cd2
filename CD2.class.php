@@ -294,23 +294,16 @@ class CD2
 		}
 
 		//	...
-		if(!chdir(self::$_git_root) ){
-			$current = getcwd();
-			$gitroot = self::$_git_root;
-			throw new Exception("chdir failed. (current={$current}, directory={$gitroot})");
-		}
-
-		//	...
 		$display = Request('display');
 		$debug   = Request('debug');
 		$remote  = 'upstream';
+
+		//	Main
 		self::ChangeDirectory();
 		self::Shell("php cd.php remote={$remote} display={$display} debug={$debug}");
 
-		//	...
-		$configs = self::SubmoduleConfig();
-
 		//	Submodules
+		$configs = self::SubmoduleConfig();
 		foreach( $configs as $config ){
 			//	...
 			self::ChangeDirectory($config['path']);
