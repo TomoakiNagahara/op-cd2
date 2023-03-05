@@ -19,11 +19,11 @@ $config['branch']    = 'master'; // This is parent branch. Each submodules branc
 $config['directory'] = '2022-github';   // Git clone use this directory name
 $config['gitmodules']=[ // Which .gitmodules file.
 	'origin'   => 'github',
-	'upstream' => 'onepiece',
+	'upstream' => 'origin',
 ];
 $config['display']   = '1';
 $config['debug']     = '1';
-$config['version']   = '74, 80, 81, 82'; // PHP version to inspect.
+$config['version']   = ''; // PHP version to inspect.
 
 //	...
 return $config;
