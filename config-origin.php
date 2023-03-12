@@ -12,11 +12,11 @@
 //	...
 $config = [];
 $config['workspace'] = '/www/workspace/';
-$config['upstream']  = 'https://github.com/onepiece-framework/op-app-skeleton-2022';
 $config['origin']    = 'https://github.com/TomoakiNagahara/op-app-skeleton-2022';
+$config['upstream']  = 'https://github.com/onepiece-framework/op-app-skeleton-2022';
 $config['github']    = 'TomoakiNagahara'; // GitHub account (user name)
 $config['branch']    = 'master'; // This is parent branch. Each submodules branch is .gitmodules.
-$config['directory'] = '2022-github';   // Git clone use this directory name
+$config['directory'] = '2022-origin';   // Git clone use this directory name
 $config['gitmodules']=[ // Which .gitmodules file.
 	'origin'   => 'github',
 	'upstream' => 'origin',
