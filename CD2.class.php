@@ -256,7 +256,7 @@ class CD2
 
 			//	Top
 			self::ChangeDirectory();
-			self::Shell("php{$version} ci.php display={$display} debug={$debug}");
+			self::Shell("php{$version} ci.php display={$display} debug={$debug} force=1");
 
 			//	Submodules
 			foreach( $configs as $config ){
