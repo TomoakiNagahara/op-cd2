@@ -270,7 +270,7 @@ class CD2
 				//	...
 				self::ChangeDirectory($config['path']);
 				//	...
-				self::Shell("php{$version} ci.php display={$display} debug={$debug}");
+				self::Shell("php{$version} ci.php display={$display} debug={$debug} force=1");
 			}
 		}
 
