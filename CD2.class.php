@@ -315,9 +315,6 @@ class CD2
 		$debug   = Request('debug');
 		$remote  = 'upstream';
 
-		//	Main
-		self::ChangeDirectory();
-		self::Shell("php cd.php remote={$remote} display={$display} debug={$debug}");
 
 		//	Submodules
 		$configs = self::SubmoduleConfig();
@@ -327,6 +324,10 @@ class CD2
 			//	...
 			self::Shell("php{$version} cd.php remote={$remote} display={$display} debug={$debug}");
 		}
+
+		//	Main
+		self::ChangeDirectory();
+		self::Shell("php{$version} cd.php remote={$remote} display={$display} debug={$debug}");
 
 		//	...
 		Display(" * All delivery is complete.");
