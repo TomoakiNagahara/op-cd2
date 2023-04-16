@@ -297,8 +297,9 @@ class CD2
 	/** CD
 	 *
 	 * @created    2023-02-07
+	 * @param      string      $version Execute PHP version
 	 */
-	static function CD()
+	static function CD(string $version='')
 	{
 		//	...
 		Debug(__METHOD__, false);
@@ -324,7 +325,7 @@ class CD2
 			//	...
 			self::ChangeDirectory($config['path']);
 			//	...
-			self::Shell("php cd.php remote={$remote} display={$display} debug={$debug}");
+			self::Shell("php{$version} cd.php remote={$remote} display={$display} debug={$debug}");
 		}
 
 		//	...
