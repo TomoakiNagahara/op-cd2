@@ -19,11 +19,11 @@ ini_set('log_errors'    , 0);
 chdir(__DIR__);
 
 //	...
-require('Error.php');
-require('Debug.php');
-require('Display.php');
-require('Request.php');
-require('CD2.class.php');
+require_once('Error.php');
+require_once('Debug.php');
+require_once('Display.php');
+require_once('Request.php');
+require_once('CD2.class.php');
 
 //	...
 $exit = CD2::Auto() ? 0: 1;
