@@ -189,6 +189,9 @@ class CD2
 		//	Init app by ci.php.
 		self::Shell("php ci.php display={$display} debug={$debug}");
 
+		//	Checkout default branch from .gitmodules.
+		self::Shell("php git.php asset/git/rebase.php branch={$branch}");
+
 		//	Set submodules upstream repository.
 		$gitmodules = '.gitmodules_'.Request('gitmodules')['upstream'];
 		self::Shell("php git.php asset/git/submodule/remote/add.php config={$gitmodules} name=upstream display={$display} debug={$debug} test=0");
