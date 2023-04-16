@@ -204,10 +204,6 @@ class CD2
 		//	Fetch upstream
 		self::Shell("git fetch upstream");
 		self::Shell("git submodule foreach git fetch upstream");
-
-		//	Recovery .gitmodules
-		self::Shell('rm .gitmodules');
-		self::Shell('cp .gitmodules_origin .gitmodules');
 	}
 
 	/** Rebase to the latest.
