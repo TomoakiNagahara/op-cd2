@@ -247,6 +247,13 @@ class CD2
 		$debug   = Request('debug');
 		$version = Request('version');
 		$submodule = Request('submodule');
+		$ci        = Request('ci')        ?? 1;
+
+		//	...
+		if(!$ci ){
+			Debug('Skip CD', false);
+			return;
+		}
 
 		//	...
 		if( $version ){
