@@ -305,16 +305,18 @@ class CD2
 		Debug(__METHOD__, false);
 
 		//	...
-		if(!(Request('cd') ?? 1) ){
-			Debug('Skip CD', false);
-			return;
-		}
-
-		//	...
 		$display = Request('display');
 		$debug   = Request('debug');
+		$cd      = Request('cd')      ?? 1;
 		$remote  = 'upstream';
 
+		//	...
+		if(!$cd ){
+			Debug('Skip CD', false);
+			return;
+		}else if(!$version ){
+			$version = $cd['php'] ?? '';
+		}
 
 		//	Submodules
 		$configs = self::SubmoduleConfig();
