@@ -140,6 +140,7 @@ class CD2
 		$display   = Request('display');
 		$debug     = Request('debug');
 		$origin    = Request('origin');
+		$branch    = Request('branch');
 		$directory = Request('directory');
 
 		//	Check if already cloned.
@@ -166,6 +167,11 @@ class CD2
 
 		//	Change directory to cloned directory.
 		self::ChangeDirectory();
+
+		//	Change target branch.
+		if( $branch !== trim(`git rev-parse --abbrev-ref HEAD 2>&1`) ){
+		    self::Shell("git checkout origin/{$branch} -b {$branch}");
+		}
 
 		//	Change submodule resource.
 		$user_name = Request('github');
