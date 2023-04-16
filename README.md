@@ -86,3 +86,41 @@ while read oldrev newrev refname; do
     fi
 done
 ```
+
+# Concept code
+
+## Request
+
+```php
+function Request(string $key){
+    //  ...
+    static $_argv;
+
+    //  Initialize only once.
+    if(!$_argv ){
+        //  Loop each argv
+        foreach( $_SERVER['argv'] as $argv ){
+            //  Separate to key and value.
+            list($key, $val) = explode('=', $argv);
+
+            //  Init
+            $_argv[$key] = $val;
+        }
+
+        //  Get config array from path.
+        $config = call_user_func(function($path){ return require($path); }, $argv['config']);
+
+        //  Loop each value.
+        foreach( $config as $key => $val ){
+            //  Do not overwrite.
+            if( isset($argv[$key]) === false ){
+                //  Init
+                $argv[$key] = $val;
+            }
+        }
+    }
+
+    //  ...
+    return $_argv[$key] ?? null;
+}
+```
