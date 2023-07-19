@@ -168,9 +168,12 @@ class CD2
 		//	Change directory to cloned directory.
 		self::ChangeDirectory();
 
-		//	Change target branch.
-		if( $branch !== trim(`git rev-parse --abbrev-ref HEAD 2>&1`) ){
-		    self::Shell("git checkout origin/{$branch} -b {$branch}");
+        //  Get current branch.
+        $current_branch = trim(`git rev-parse --abbrev-ref HEAD 2>&1`);
+
+        //  Change target branch.
+        if( $branch !== $current_branch ){
+			self::Shell("git checkout origin/{$branch} -b {$branch}");
 		}
 
 		//	Change submodule resource.
