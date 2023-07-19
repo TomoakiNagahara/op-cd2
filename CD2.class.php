@@ -187,7 +187,8 @@ class CD2
 		self::Shell("git submodule sync");
 
 		//	Init submodules. Maybe, If nothing commit id, return fail.
-		`git submodule update --init --recursive`;
+	//	self::Shell('git submodule update --init --recursive');
+		self::Shell('sh asset/git/submodule/init.sh');
 
 		//	Init app by ci.php.
 		self::Shell("php ci.php display={$display} debug={$debug}");
