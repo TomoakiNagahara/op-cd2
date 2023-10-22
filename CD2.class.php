@@ -86,6 +86,7 @@ class CD2
 		try{
 			self::Init();
 			self::Clone();
+            self::Fetch();
 			self::Rebase();
 			self::CI();
 			self::CD();
@@ -209,6 +210,22 @@ class CD2
 		self::Shell("git fetch upstream");
 		self::Shell("git submodule foreach git fetch upstream");
 	}
+
+    /** Rebase to the latest.
+     *
+     * @created    2023-02-07
+     */
+    static function Fetch()
+    {
+        //	...
+        Debug(__METHOD__, false);
+
+        //	Fetch
+        self::Shell("git fetch origin");
+    //  self::Shell("git fetch upstream");
+        self::Shell("git submodule foreach git fetch origin");
+    //  self::Shell("git submodule foreach git fetch upstream");
+    }
 
 	/** Rebase to the latest.
 	 *
