@@ -269,11 +269,14 @@ class CD2
         //	...
         Debug(__METHOD__, false);
 
+        //	Change dirctory.
+        chdir(self::$_git_root);
+
         //	Fetch
         self::Shell("git fetch origin");
-    //  self::Shell("git fetch upstream");
+        self::Shell("git fetch upstream");
         self::Shell("git submodule foreach git fetch origin");
-    //  self::Shell("git submodule foreach git fetch upstream");
+        self::Shell("git submodule foreach git fetch upstream");
     }
 
 	/** Rebase to the latest.
