@@ -146,12 +146,14 @@ class CD2
 		Debug(__METHOD__, false);
 
 		//	...
-		$workspace = Request('workspace');
 		$display   = Request('display');
 		$debug     = Request('debug');
 		$origin    = Request('origin');
 		$branch    = Request('branch');
-		$directory = Request('directory');
+
+        //  ...
+        $workspace = dirname( self::$_git_root);
+        $directory = basename(self::$_git_root);
 
 		//	Check if already cloned.
 		if( file_exists(self::$_git_root) ){
