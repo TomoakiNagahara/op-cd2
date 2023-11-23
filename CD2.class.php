@@ -164,7 +164,7 @@ class CD2
 		//	Check if workspace exists.
 		if(!file_exists($workspace) ){
 			//	Create workspace directory.
-			if( self::Shell('mkdir {$workspace}') ){
+			if( self::Shell("mkdir -p {$workspace}") ){
 				throw new Exception("mkdir failed. ($workspace)");
 			}
 		}
