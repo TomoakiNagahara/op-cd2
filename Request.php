@@ -13,18 +13,34 @@
 
 /** Return request value by key.
  *
+ * <pre>
+ * //  Get
+ * $arg = Requet('key_name');
+ * //  Set is overwrite
+ * Request('key_name', 'new_value');
+ * </pre>
+ *
  * @created    2022-12-07
  * @param      string      $key
+ * @param      mixed       $value
  * @return     mixed
  */
-function Request(string $key){
+function Request(string $key, $value=null){
 	//	...
 	static $_argv;
+
+    //  ...
+    $key = trim($key);
 
 	//	...
 	if(!$_argv ){
 		$_argv = GetArgv();
 	}
+
+    //  ...
+    if( $value !== null ){
+        $_argv[$key] = $value;
+    }
 
 	//	...
 	return $_argv[$key] ?? null;
