@@ -115,10 +115,19 @@ class CD2
 		Debug(__METHOD__, false);
 
 		//	...
-		foreach(['config','workspace','upstream','origin','branch','directory'] as $key ){
+		foreach(['config','path','workspace','upstream','origin','branch','directory'] as $key ){
 			if( empty( /* self::$_config[$key] = */ Request($key) ) ){
 				throw new Exception("This arguments is not set ({$key}). Please read README.md.");
 			}
+
+            //  ...
+            if( $key === 'path' and $git_root = Request('path') ){
+                $workspace = dirname( $git_root);
+                $directory = basename($git_root);
+                Request('workspace', $workspace);
+                Request('directory', $directory);
+                self::$_git_root = $git_root;
+            }
 		}
 
 		//	...
