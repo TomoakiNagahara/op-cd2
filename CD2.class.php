@@ -190,6 +190,7 @@ class CD2
 
 		//	Change submodule resource.
 		$user_name = Request('github');
+		$host_name = Request('gitmodules')['host_name'] ?? '';
 		self::Shell("bash ./asset/git/submodule/repo.sh {$user_name} {$host_name}");
 
 		//	Switch to origin .gitmodules file.
