@@ -378,7 +378,7 @@ class CD2
 		Display(" * All inspection is complete.");
 	}
 
-	/** CD
+	/** Code Delivery
 	 *
 	 * @created    2023-02-07
 	 * @param      string      $version Execute PHP version
@@ -405,10 +405,12 @@ class CD2
 		//	Submodules
 		$configs = self::SubmoduleConfig();
 		foreach( $configs as $config ){
+            //  ...
+            $branch = $config['branch'];
 			//	...
 			self::ChangeDirectory($config['path']);
 			//	...
-			self::Shell("php{$version} cd.php remote={$remote} display={$display} debug={$debug}");
+			self::Shell("php{$version} cd.php remote={$remote} branch={$branch} display={$display} debug={$debug}");
 		}
 
 		//	Main
