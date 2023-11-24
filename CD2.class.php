@@ -308,7 +308,7 @@ class CD2
 		self::Shell("php git.php asset/git/rebase.php remote=origin branch={$branch}");
 	}
 
-	/** CI
+	/** Code Inspect
 	 *
 	 * @created    2023-02-07
 	 */
@@ -321,7 +321,9 @@ class CD2
 		$display = Request('display');
 		$debug   = Request('debug');
 		$version = Request('version');
+		/*
 		$submodule = Request('submodule');
+		*/
 		$ci        = Request('ci')        ?? 1;
 
 		//	...
@@ -337,8 +339,10 @@ class CD2
 			$versions = [''];
 		}
 
+		/*
 		//	...
 		$configs = self::SubmoduleConfig();
+		*/
 
 		//	...
 		foreach( $versions as $version){
@@ -352,6 +356,7 @@ class CD2
 			*/
 			self::Shell("php{$version} ci.php display={$display} debug={$debug}");
 
+			/*
 			//	Submodules
 			foreach( $configs as $config ){
 				//	...
@@ -366,6 +371,7 @@ class CD2
 				//	...
 				self::Shell("php{$version} ci.php display={$display} debug={$debug} force=1");
 			}
+			*/
 		}
 
 		//	...
