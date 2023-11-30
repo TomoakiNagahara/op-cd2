@@ -86,7 +86,7 @@ class CD2
 		try{
 			self::Init();
 			self::Clone();
-            self::Fetch();
+			self::Fetch();
 			self::Rebase();
 			self::CI();
 			self::CD();
@@ -207,7 +207,10 @@ class CD2
 		self::Shell("php ci.php display={$display} debug={$debug}");
 
 		//	Checkout default branch from .gitmodules.
+		self::Shell("php git.php asset/git/branch.php");
+		/*
 		self::Shell("php git.php asset/git/rebase.php branch={$branch}");
+		*/
 
 		//	Set submodules upstream repository.
 		$gitmodules = '.gitmodules_'.Request('gitmodules')['upstream'];
