@@ -23,10 +23,10 @@ require_once('Request.php');
 
 //  ...
 $php        = Request('php')     ?? '';
-$display    = Request('display') ?? 1;
-$debug      = Request('debug')   ?? 0;
 $config_dir = Request('config_dir');
 $config_dir = rtrim($config_dir, '/');
+$display    = empty(Request('display')) ? '': 'display=1';
+$debug      = empty(Request('debug'))   ? '':   'debug=1';
 
 //  ...
 if(!is_dir($config_dir) ){
@@ -47,11 +47,13 @@ foreach( glob("{$config_dir}/*.php") as $path ){
     /* @var $output array */
     /* @var $status int   */
 
-    //  CI
-    exec("php{$php} ./action.php config={$path} display={$display} debug={$debug} cd=0", $output, $status);
     echo join("\n", $output);
+	//	CI
+	$cmd = "php{$php} ./action.php config={$path} {$display} {$debug} cd=0";
+	exec($cmd, $output, $status);
 
-    //  CD
-    exec("php{$php} ./action.php config={$path} display={$display} debug={$debug} ci=0 rebase=0", $output, $status);
     echo join("\n", $output);
+	//	CD
+	$cmd = "php{$php} ./action.php config={$path} {$display} {$debug} ci=0 rebase=0";
+	exec($cmd, $output, $status);
 }
