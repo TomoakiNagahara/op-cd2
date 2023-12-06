@@ -9,6 +9,11 @@
  * @copyright  Tomoaki Nagahara All right reserved.
  */
 
+/** include
+ *
+ */
+require_once('Debug.php');
+
 /** Catch standard error.
  *
  * @created    2023-01-02
