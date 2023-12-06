@@ -37,7 +37,7 @@ function Display(string $message)
 
 		//	...
 		if( $_debug > 1 ){
-			DebugTrace(debug_backtrace());
+		//	DebugTrace(debug_backtrace());
 		}
 	}
 }
