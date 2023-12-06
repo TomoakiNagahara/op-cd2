@@ -77,7 +77,7 @@ class CD2
 	 *
 	 * @created    2023-02-05
 	 */
-	static function Auto()
+	static function Auto() : bool
 	{
 		//	...
 		Debug(__METHOD__, false);
