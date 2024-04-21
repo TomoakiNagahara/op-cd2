@@ -218,8 +218,10 @@ class CD2
 
 		//	Set upstream
 		$upstream = Request('upstream');
+		$gitmodules = Request('gitmodules')['upstream'];
 		self::ChangeDirectory();
 		self::Shell("git remote add upstream {$upstream}");
+		self::Shell("php git.php asset/git/submodule/remote/add.php config=.gitmodules_{$gitmodules} name=upstream test=0");
 
 		//	Fetch upstream
 		self::Shell("git fetch upstream");
