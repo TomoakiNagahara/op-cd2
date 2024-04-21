@@ -11,19 +11,19 @@
 
 //	...
 $config = [];
-$config['path']      = '/www/workspace/2022/app3/';
+$config['path']      = '/www/workspace/2024/app3/';
 $config['origin']    = '~/repo/op/skeleton/2022.git';
 $config['upstream']  = 'app3:~/repo/op/skeleton/2022.git';
 $config['github']    = 'TomoakiNagahara'; // GitHub account (user name)
-$config['branch']    = '2022'; // This is parent branch. Each submodules branch is .gitmodules.
+$config['branch']    = '2024'; // This is parent branch. Each submodules branch is .gitmodules.
 $config['gitmodules']=[ // Which .gitmodules file.
 	'origin'   => 'local',
 	'upstream' => 'app3',
-    'host_name'=> 'app3',
+	'host_name'=> 'app3',
 ];
 $config['display']   = '0';
 $config['debug']     = '0';
-$config['version']   = '82'; // PHP version to inspect.
+$config['version']   = '74, 80, 81, 82'; // PHP version to inspect.
 
 //	...
 return $config;
