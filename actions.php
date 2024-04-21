@@ -47,13 +47,21 @@ foreach( glob("{$config_dir}/*.php") as $path ){
     /* @var $output array */
     /* @var $status int   */
 
-    echo join("\n", $output);
 	//	CI
 	$cmd = "php{$php} ./action.php config={$path} {$display} {$debug} cd=0";
 	exec($cmd, $output, $status);
+	if( $status ){
+		echo " * $cmd --> $status \n";
+		echo join("\n", $output);
+		continue;
+	}
 
-    echo join("\n", $output);
 	//	CD
 	$cmd = "php{$php} ./action.php config={$path} {$display} {$debug} ci=0 rebase=0";
 	exec($cmd, $output, $status);
+	if( $status ){
+		echo " * $cmd --> $status \n";
+		echo join("\n", $output);
+		continue;
+	}
 }
