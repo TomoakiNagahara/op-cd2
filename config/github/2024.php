@@ -1,8 +1,9 @@
 <?php
-/** op-cd2:/config.php
+/** op-cd2:/2024-github.php
  *
  * @created    2023-01-02
  * @moved      2023-02-05 from op-cd1
+ * @copied     2024-??-??
  * @version    1.0
  * @package    op-cd2
  * @author     Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
@@ -10,12 +11,15 @@
  */
 
 //	...
+$branch = '2024';
+
+//	...
 $config = [];
-$config['path']      = '/www/workspace/2024/github/';
-$config['origin']    = '~/repo/op/skeleton/2022.git';
-$config['upstream']  = 'https://github.com/TomoakiNagahara/op-skeleton-2024.git';
+$config['path']      = "/www/workspace/{$branch}/github/";
+$config['origin']    = "~/repo/op/skeleton/{$branch}.git";
+$config['upstream']  = "https://github.com/TomoakiNagahara/op-skeleton-{$branch}.git";
 $config['github']    = 'TomoakiNagahara'; // GitHub account (user name)
-$config['branch']    = '2024'; // This is parent branch. Each submodules branch is .gitmodules.
+$config['branch']    = $branch; // This is parent branch. Each submodules branch is .gitmodules.
 $config['gitmodules']=[ // Which .gitmodules file.
 	'origin'   => 'local',
 	'upstream' => 'github',
