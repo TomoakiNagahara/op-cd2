@@ -12,8 +12,8 @@
 //	...
 $config = [];
 $config['path']      = '/www/workspace/2022/origin/';
-$config['origin']    = 'https://github.com/TomoakiNagahara/op-app-skeleton-2022.git';
-$config['upstream']  = 'https://github.com/onepiece-framework/op-app-skeleton-2022.git';
+$config['origin']    = 'https://github.com/TomoakiNagahara/op-skeleton-2022.git';
+$config['upstream']  = 'https://github.com/onepiece-framework/op-skeleton-2022.git';
 $config['github']    = 'TomoakiNagahara'; // GitHub account (user name)
 $config['branch']    = '2022'; // This is parent branch. Each submodules branch is .gitmodules.
 $config['gitmodules']=[ // Which .gitmodules file.
@@ -22,7 +22,7 @@ $config['gitmodules']=[ // Which .gitmodules file.
 ];
 $config['display']   = '0';
 $config['debug']     = '0';
-$config['version']   = '74, 80, 81, 82'; // PHP version to inspect.
+$config['version']   = '74, 80, 81, 82, 83'; // PHP version to inspect.
 
 //	...
 return $config;
