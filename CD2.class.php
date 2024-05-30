@@ -26,7 +26,7 @@ class CD2
 	 */
 	static private $_git_root;
 
-	/** Chenge directory git root.
+	/** Change directory git root.
 	 *
 	 * @created    2023-02-07
 	 * @param      string      $path
