@@ -26,6 +26,13 @@ class CD2
 	 */
 	static private $_git_root;
 
+	/** Git cloned
+	 *
+	 * @created    2024-05-26
+	 * @var        boolean
+	 */
+	static private $_git_cloned;
+
 	/** Change directory git root.
 	 *
 	 * @created    2023-02-07
@@ -156,6 +163,7 @@ class CD2
 		//	Check if already cloned.
 		if( file_exists(self::$_git_root) ){
 			Debug(' * Already cloned.('.self::$_git_root.')', 0);
+			self::$_git_cloned = true;
 			return;
 		}
 
