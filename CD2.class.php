@@ -269,14 +269,16 @@ class CD2
         //	...
         Debug(__METHOD__, false);
 
-        //	Change dirctory.
+        //	Change directory.
         chdir(self::$_git_root);
 
-        //	Fetch
-        self::Shell("git fetch origin");
-        self::Shell("git fetch upstream");
-        self::Shell("git submodule foreach git fetch origin");
-        self::Shell("git submodule foreach git fetch upstream");
+		//	Fetch
+		if( self::$_git_cloned ){
+			self::Shell("git fetch origin");
+			self::Shell("git submodule foreach git fetch origin");
+		}
+		self::Shell("git fetch upstream");
+		self::Shell("git submodule foreach git fetch upstream");
     }
 
 	/** Rebase to the latest.
