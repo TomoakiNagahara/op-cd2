@@ -209,7 +209,9 @@ class CD2
 		*/
 
 		//	Checkout default branch from .gitmodules.
+		/*
 		self::Shell("php git.php asset/git/branch.php");
+		*/
 		/*
 		self::Shell("php git.php asset/git/rebase.php branch={$branch}");
 		*/
