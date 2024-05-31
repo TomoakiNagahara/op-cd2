@@ -204,7 +204,9 @@ class CD2
 		self::Shell('php asset/git/init.php');
 
 		//	Init app by ci.php.
+		/*
 		self::Shell("php ci.php display={$display} debug={$debug}");
+		*/
 
 		//	Checkout default branch from .gitmodules.
 		self::Shell("php git.php asset/git/branch.php");
