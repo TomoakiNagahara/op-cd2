@@ -224,8 +224,10 @@ class CD2
 		self::Shell("php git.php asset/git/submodule/remote/add.php config=.gitmodules_{$gitmodules} name=upstream test=0");
 
 		//	Fetch upstream
+		/* Do it with Fetch().
 		self::Shell("git fetch upstream");
 		self::Shell("git submodule foreach git fetch upstream");
+		*/
 	}
 
     /** Rebase to the latest.
