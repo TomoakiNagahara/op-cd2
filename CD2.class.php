@@ -216,9 +216,11 @@ class CD2
 		self::Shell("php git.php asset/git/rebase.php branch={$branch}");
 		*/
 
+		/*
 		//	Set submodules upstream repository.
 		$gitmodules = '.gitmodules_'.Request('gitmodules')['upstream'];
 		self::Shell("php git.php asset/git/submodule/remote/add.php config={$gitmodules} name=upstream display={$display} debug={$debug} test=0");
+		*/
 
 		//	Set upstream
 		$upstream = Request('upstream');
