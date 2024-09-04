@@ -1,6 +1,10 @@
 <?php
 /** op-cd2:/action.php
  *
+ * # For crontab
+ * 1. `ssh-agent -s` : Startup ssh-agent
+ * 2. `ssh-add /Users/tomoaki/.ssh/id_rsa` : Add private key
+ *
  * @created    2023-01-02
  * @moved      2023-02-05 from op-cd1
  * @version    1.0
