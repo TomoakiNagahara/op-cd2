@@ -28,6 +28,50 @@ rebase    : Skip rebase.
 cd        : Skip CD.
 ```
 
+## For GitHub
+
+ The following measures could be considered:
+
+1. SSH - Secure Shell
+2. PAT - Personal access tokens
+3. GitHub CLI
+
+## SSH
+
+ Start the ssh-agent and register the private key.
+
+### 1. Start the ssh-agent
+```
+ssh-agent -s
+```
+
+### 2. Register the private key.
+```
+ssh-add /path/to/ssh/id_rsa
+```
+
+## PAT - Personal access tokens
+
+ Change the URL to this format:
+
+```
+git remote set-url origin https://<USERNAME>:<TOKEN>@github.com/<USERNAME>/<REPOSITORY>.git
+```
+
+## GitHub CLI
+
+ Log in to GitHub using the GitHub CLI. Your login information will be cached, So you can use it from `crontab`.
+
+### 1. Install
+```
+sudo apt install gh
+```
+
+### 2. Login
+```
+gh auth login
+```
+
 # Files
 
  * README.md      - This one.
