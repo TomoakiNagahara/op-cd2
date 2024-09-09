@@ -14,6 +14,14 @@ ini_set('short_open_tag', 1);
 ini_set('display_errors', 1);
 ini_set('log_errors'    , 0);
 
+/* @var $result array */
+/* @var $status int   */
+exec('ping -c 1 github.com', $result, $status);
+if( $status ){
+	echo join("\n", $result);
+	exit(__LINE__);
+}
+
 //  ...
 chdir(__DIR__);
 
