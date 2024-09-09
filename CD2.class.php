@@ -191,6 +191,7 @@ class CD2
 		//	Change submodule resource.
 		$user_name = Request('github');
 		$host_name = Request('gitmodules')['host_name'] ?? '';
+		if( $user_name ){
 		self::Shell("bash ./asset/git/submodule/repo.sh {$user_name} {$host_name}");
 
 		//	Switch to origin .gitmodules file.
@@ -198,6 +199,7 @@ class CD2
 		self::Shell("rm .gitmodules");
 		self::Shell("cp {$gitmodules} .gitmodules");
 		self::Shell("git submodule sync");
+		}
 
 		//	Init submodules. Maybe, If nothing commit id, return fail.
 	//	self::Shell('git submodule update --init --recursive');
