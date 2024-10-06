@@ -94,7 +94,9 @@ class CD2
 			self::Init();
 			self::Clone();
 			self::Fetch();
+			/*
 			self::Rebase();
+			*/
 			self::CI();
 			self::CD();
 
