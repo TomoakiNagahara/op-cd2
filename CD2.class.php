@@ -274,16 +274,11 @@ class CD2
 
 		//	Fetch
 		if( self::$_git_cloned ){
-			/*
-			self::Shell("git fetch origin");
-			self::Shell("git submodule foreach git fetch origin");
-			*/
 			self::Shell("php git.php asset/git/update.php");
+		}else{
+			self::Shell("php git.php asset/git/branch.php");
+			self::Shell("php git.php asset/git/update.php fetch=0");
 		}
-		/*
-		self::Shell("git fetch upstream");
-		self::Shell("git submodule foreach git fetch upstream");
-		*/
     }
 
 	/** Rebase to the latest.
