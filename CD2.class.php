@@ -276,7 +276,7 @@ class CD2
 		if( self::$_git_cloned ){
 			self::Shell("php git.php asset/git/update.php");
 		}else{
-			self::Shell("php git.php asset/git/branch.php");
+		//	self::Shell("php git.php asset/git/branch.php");
 			self::Shell("php git.php asset/git/update.php fetch=0");
 		}
     }
