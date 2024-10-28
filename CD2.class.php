@@ -146,8 +146,6 @@ class CD2
 		Debug(__METHOD__, false);
 
 		//	...
-		$display   = Request('display');
-		$debug     = Request('debug');
 		$origin    = Request('origin');
 		$branch    = Request('branch');
 
@@ -190,7 +188,7 @@ class CD2
 
 		//	Change submodule resource.
 		$user_name = Request('github');
-		$host_name = Request('gitmodules')['host_name'] ?? '';
+		$host_name = Request('gitmodules')['host_name'] ?? Request('gitmodules')['hostname'] ?? null;
 		if( $user_name ){
 		self::Shell("bash ./asset/git/submodule/repo.sh {$user_name} {$host_name}");
 
