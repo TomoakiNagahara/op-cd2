@@ -404,11 +404,20 @@ class CD2
 			$version = $cd['php'] ?? '';
 		}
 
+		//	Get default branch name
+		if(!defined('_OP_APP_BRANCH_') ){
+			self::ChangeDirectory();
+			require_once('asset/config/op.php');
+		}
+
 		//	Submodules
 		$configs = self::SubmoduleConfig();
 		foreach( $configs as $config ){
 			//	...
-			$branch = $config['branch'] ?? 'master';
+			$branch = $config['branch'] ?? null;
+			if(!$branch ){
+				$branch = _OP_APP_BRANCH_;
+			}
 			//	...
 			self::ChangeDirectory($config['path']);
 			//	...
