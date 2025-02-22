@@ -190,7 +190,17 @@ class CD2
 		$user_name = Request('github');
 		$host_name = Request('gitmodules')['host_name'] ?? Request('gitmodules')['hostname'] ?? null;
 		if( $user_name ){
-		self::Shell("bash ./asset/git/submodule/repo.sh {$user_name} {$host_name}");
+			//	op-asset-git was separated from 2026.
+			foreach([
+				'./asset/git/submodule/repo.sh',
+				'./asset/init/repo.sh',
+			] as $file_path){
+				//	...
+				if( file_exists($file_path) ){
+					self::Shell("bash {$file_path} {$user_name} {$host_name}");
+					break;
+				}
+			}
 
 		//	Switch to origin .gitmodules file.
 		$gitmodules = '.gitmodules_'.Request('gitmodules')['origin'];
@@ -199,9 +209,23 @@ class CD2
 		self::Shell("git submodule sync");
 		}
 
+		//	op-asset-git was separated from 2026.
+		foreach([
+			'./asset/git/init.php',
+			'./asset/init/submodules.php',
+		] as $file_path){
+			//	...
+			if( file_exists($file_path) ){
+				self::Shell("php {$file_path}");
+				break;
+			}
+		}
+
 		//	Init submodules. Maybe, If nothing commit id, return fail.
-	//	self::Shell('git submodule update --init --recursive');
+		/*
+		self::Shell('git submodule update --init --recursive');
 		self::Shell('php asset/git/init.php');
+		*/
 
 		//	Init app by ci.php.
 		/*
