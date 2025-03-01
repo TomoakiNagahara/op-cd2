@@ -87,10 +87,10 @@ class CD2
 	static function Auto() : bool
 	{
 		//	...
-		Debug(__METHOD__, false);
-
-		//	...
 		try{
+			//	...
+			Debug(__METHOD__, false);
+
 			self::Init();
 			self::Clone();
 			self::Fetch();
