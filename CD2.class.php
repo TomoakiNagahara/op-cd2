@@ -123,26 +123,21 @@ class CD2
 		//	...
 		Debug(__METHOD__, false);
 
+		//	"path" is old arg. Change to workspace.
+		if( $workspace = Request('path') ){
+			Request('workspace', $workspace);
+		}
+
 		//	...
-		foreach(['config','path','workspace','upstream','origin','branch','directory'] as $key ){
+		foreach(['config','workspace','upstream','origin','branch'] as $key ){
 			if( empty( /* self::$_config[$key] = */ Request($key) ) ){
 				throw new Exception("This arguments is not set ({$key}). Please read README.md.");
 			}
-
-            //  ...
-            if( $key === 'path' and $git_root = Request('path') ){
-                $workspace = dirname( $git_root);
-                $directory = basename($git_root);
-                Request('workspace', $workspace);
-                Request('directory', $directory);
-                self::$_git_root = $git_root;
-            }
 		}
 
 		//	...
 		$workspace = Request('workspace');
-		$directory = Request('directory');
-		self::$_git_root  = rtrim($workspace,'/').'/'.$directory.'/';
+		self::$_git_root  = rtrim($workspace,'/').'/';
 	}
 
 	/** Clone
