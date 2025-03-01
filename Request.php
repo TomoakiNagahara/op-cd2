@@ -15,7 +15,7 @@
  *
  * <pre>
  * //  Get
- * $arg = Requet('key_name');
+ * $arg = Request('key_name');
  * //  Set is overwrite
  * Request('key_name', 'new_value');
  * </pre>
