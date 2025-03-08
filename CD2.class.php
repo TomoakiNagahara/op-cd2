@@ -452,6 +452,9 @@ class CD2
 	static function Shell($cmd)
 	{
 		//	...
+		Log($cmd);
+
+		//	...
 		$result = [];
 		$status = 0;
 		exec("$cmd 2>&1", $result, $status);
