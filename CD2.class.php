@@ -389,8 +389,10 @@ class CD2
 		Debug(__METHOD__, false);
 
 		//	...
+		/*
 		$display = Request('display');
 		$debug   = Request('debug');
+		*/
 		$cd      = Request('cd')      ?? 1;
 		$remote  = 'upstream';
 
@@ -410,12 +412,19 @@ class CD2
 			//	...
 			self::ChangeDirectory($config['path']);
 			//	...
+			/*
 			self::Shell("php{$version} cd.php remote={$remote} branch={$branch} display={$display} debug={$debug}");
+			*/
+			self::Shell("git push {$remote} {$branch}");
 		}
 
 		//	Main
 		self::ChangeDirectory();
+		/*
 		self::Shell("php{$version} cd.php remote={$remote} display={$display} debug={$debug}");
+		*/
+		$branch = Request('branch');
+		self::Shell("git push {$remote} {$branch}");
 
 		//	...
 		Display(" * All delivery is complete.");
