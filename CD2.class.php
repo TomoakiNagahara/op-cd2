@@ -473,4 +473,18 @@ class CD2
 			throw new Exception($cmd);
 		}
 	}
+
+	/** Log
+	 *
+	 * @created    2025-03-08
+	 * @param      string     $line
+	 */
+	static function Log(string $line)
+	{
+		//	...
+		$path = self::$_git_root . '_cicd.log';
+
+		//	...
+		file_put_contents($path, $line);
+	}
 }
