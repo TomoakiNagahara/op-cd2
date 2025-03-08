@@ -272,12 +272,15 @@ class CD2
         //	Change directory.
         chdir(self::$_git_root);
 
+		//	...
+		$branch    = Request('branch');
+
 		//	Fetch
 		if( self::$_git_cloned ){
-			self::Shell("php git.php asset/git/update.php");
+			self::Shell("php git.php asset/git/update.php branch={$branch}");
 		}else{
 		//	self::Shell("php git.php asset/git/branch.php");
-			self::Shell("php git.php asset/git/update.php fetch=0");
+			self::Shell("php git.php asset/git/update.php branch={$branch}");
 		}
     }
 
