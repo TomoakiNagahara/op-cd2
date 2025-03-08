@@ -485,6 +485,6 @@ class CD2
 		$path = self::$_git_root . '_cicd.log';
 
 		//	...
-		file_put_contents($path, $line);
+		file_put_contents($path, $line . PHP_EOL);
 	}
 }
