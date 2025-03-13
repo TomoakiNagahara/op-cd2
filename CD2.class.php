@@ -252,8 +252,15 @@ class CD2
 		*/
 
 		//	Set upstream
-		$upstream = Request('upstream');
-		$gitmodules = Request('gitmodules')['upstream'];
+		$upstream   = Request('upstream'); // main repository
+		$gitmodules = Request('gitmodules')['upstream']; // .gitmodules file name. ex: origin, upstream, local
+		//	If use ssh.
+		if( Request('gitmodules')['ssh'] ?? null ){
+			$from = '.gitmodules_'.$gitmodules;
+			self::Shell("sh asset/init/ssh.sh {$from}");
+			$gitmodules = 'ssh'; // Change to .gitmodules_ssh
+		}
+		//	Initialize.
 		self::ChangeDirectory();
 		self::Shell("git remote add upstream {$upstream}");
 		self::Shell("php git.php asset/git/submodule/remote/add.php config=.gitmodules_{$gitmodules} name=upstream test=0");
