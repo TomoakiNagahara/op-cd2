@@ -458,8 +458,8 @@ class CD2
 	 */
 	static function Shell($cmd)
 	{
-		//	...
-		Log($cmd);
+		//  ...
+		self::Log($cmd);
 
 		//	...
 		$result = [];
