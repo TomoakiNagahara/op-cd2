@@ -495,6 +495,17 @@ class CD2
 		$path = self::$_git_root . '_cicd.log';
 
 		//	...
+		if(!file_exists(self::$_git_root) ){
+			//	Not yet clone.
+			return;
+		}
+
+		//	...
+		if(!file_exists($path) ){
+			touch($path);
+		}
+
+		//	...
 		file_put_contents($path, $line . PHP_EOL, FILE_APPEND);
 	}
 }
