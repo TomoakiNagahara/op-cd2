@@ -177,8 +177,10 @@ class CD2
 			throw new Exception("chdir failed. ($workspace)");
 		}
 
-		//	Git clone.
-		self::Shell("git clone {$origin} {$directory}");
+		/** Git clone.
+		 * @see https://programmingforever.hatenablog.com/entry/2021/09/20/212733
+		 */
+		self::Shell("git clone --filter=tree:0 {$origin} {$directory}");
 
 		//	Change directory to cloned directory.
 		self::ChangeDirectory();
